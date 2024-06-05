@@ -1,0 +1,40 @@
+<div class="page-header">
+  <div class="row">
+    <div class="col">
+      <h3 class="page-title">Settings</h3>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-3 col-md-12">
+    <div class="card bg-white">
+      <div class="card-body">
+        <ul class="inbox-menu">
+          <li>
+            <a [routerLink]="routes.empresa" routerLinkActive="active"><i class="far fa-building"></i>Empresa</a>
+          </li>
+          <div class="divider"></div>
+          <li>
+            <a [routerLink]="routes.branches" routerLinkActive="active"><i class="fas fa-code-branch"></i>Sucursales<span class="mail-count"></span></a>
+          </li>
+          <div class="divider"></div>
+          <li>
+            <a [routerLink]="routes.impuestos"  routerLinkActive="active"><i class="fas fa-percent"></i>Impuestos</a>
+          </li>
+          <div class="divider"></div>
+          <li>
+            <a [routerLink]="routes.categorias"  routerLinkActive="active"><i class="fas fa-list"></i>Categoría</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-9 col-md-12">
+    <div class="card bg-white cardTamanio" >
+      <div class="card-body">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

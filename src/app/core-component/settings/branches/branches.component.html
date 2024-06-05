@@ -1,0 +1,167 @@
+
+  <div class="page-header">
+    <div class="page-title">
+      <h4>Sucursales</h4>
+    </div>
+    <div class="page-btn">
+      <!-- <a class="btn btn-added" data-bs-toggle="modal" (click)="resetFormAdd()" data-bs-target="#add_branch"><img
+          src="assets/img/icons/plus.svg" class="me-2" alt="img" />Add Branch</a> -->
+          <a
+          (click)="resetFormAdd()"
+          href="javascript:void(0);"
+          class="btn btn-added"
+          data-bs-toggle="modal"
+          data-bs-target="#add_branch"
+          ><i class="fa fa-plus me-2"></i>Agregar Sucursal</a
+        >
+    </div>
+  </div>
+
+
+  <div class="email-header">
+  <div class="divider"></div> <!-- Agrega una clase divider para dividir visualmente -->
+  <!-- <div class="card"> -->
+  <div class="card-body">
+    <!-- <div class="table-top">
+
+    <!-- /Filter -->
+    <div class="card mb-0 border-0">
+
+    </div>
+    <!-- /Filter -->
+    <div class="table-responsive">
+      <table matSort matSortActive="Sno" matSortDirection="asc" matSortDisableClear class="table datanew">
+        <thead>
+          <tr>
+            <th>NOMBRE</th>
+            <th>TELÉFONO</th>
+            <th>CIUDAD</th>
+            <th>ESTADO</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of BranchesList; let i = index">
+
+            <td>{{item.name}}</td>
+            <td>{{item.phone}}</td>
+            <td>{{item.city}}</td>
+            <td>
+              <span
+               [ngClass]="{
+                  'bg-lightgreen': item.status === true,
+                  'bg-lightred': item.status === false
+              }" class="badges">{{ item.status ? 'Activo' : 'Inactivo' }}
+            </span>
+          </td>
+            <td>
+
+              <a class="me-3" data-bs-toggle="modal" data-bs-target="#add_branch" (click)="resetFormEdit()"
+                (click)="openEditModal(item)">
+                <img src="assets/img/icons/edit.svg" alt="img" />
+              </a>
+              <a class="me-3" (click)="deleteBranch(item)">
+                <img src="assets/img/icons/delete.svg" alt="img" />
+              </a>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- </div> -->
+
+  <div class="modal fade" id="add_branch" tabindex="-1" aria-labelledby="create" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">Agregar Sucursal</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <form [formGroup]="branchForm">
+            <div class="row">
+              <div class="col-lg-6 col-sm-12 col-12">
+                <div class="form-group">
+                  <label>Nombre</label>
+                  <input type="text" formControlName="name" required="true" />
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-12 col-12">
+                <div class="form-group">
+                  <label>Correo</label>
+                  <input type="text" formControlName="email" />
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-12 col-12">
+                <div class="form-group">
+                  <label>Teléfono</label>
+                  <input type="text" formControlName="phone" />
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-12 col-12">
+                <div class="form-group">
+                  <label>Latitud</label>
+                  <input type="text" formControlName="latitude" />
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-12 col-12">
+                <div class="form-group">
+                  <label>Longitud</label>
+                  <input type="text" formControlName="longitude" />
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-12 col-12">
+                <div class="form-group">
+                  <label>Estado</label>
+                  <input type="text" formControlName="state" />
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-12 col-12">
+                <div class="form-group">
+                  <label>Ciudad</label>
+                  <input type="text" formControlName="city" />
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-12 col-12">
+                <div class="form-group">
+                  <label>Código Postal</label>
+                  <input type="text" formControlName="zipCode" />
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-12 col-12">
+                <div class="form-group">
+                  <label>Dirección</label>
+                  <input type="text" formControlName="address" />
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-12 col-12">
+                <div class="form-group">
+                  <label>Estado</label>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" formControlName="status" id="homeRadio" [value]="true">
+                    <label class="form-check-label" for="homeRadio">Activo</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" formControlName="status" id="workRadio"
+                      [value]="false">
+                    <label class="form-check-label" for="workRadio">Inactivo</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="col-lg-12">
+            <a class="btn btn-submit me-2" (click)="save()">Guardar</a>
+            <a class="btn btn-cancel" data-bs-dismiss="modal">Cancelar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /product list -->

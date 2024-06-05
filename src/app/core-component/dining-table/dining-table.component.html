@@ -1,0 +1,100 @@
+<div class="page-header">
+  <div class="page-title">
+    <h4>Mesas</h4>
+  </div>
+  <div class="page-btn">
+    <!-- <a class="btn btn-added" data-bs-toggle="modal" (click)="resetFormAdd()" data-bs-target="#add_branch"><img
+        src="assets/img/icons/plus.svg" class="me-2" alt="img" />Add Branch</a> -->
+    <a href="javascript:void(0);" class="btn btn-added" data-bs-toggle="modal" data-bs-target="#addtable"><i
+          class="fa fa-plus me-2"></i>Agregar mesas</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table matSort matSortActive="Sno" matSortDirection="asc" matSortDisableClear class="table datanew">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Tamaño</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of mesasList">
+            <td>{{item.name}}</td>
+            <td>{{item.size}}</td>
+            <td>       <span
+              [ngClass]="{
+                 'bg-lightgreen': item.status === true,
+                 'bg-lightred': item.status === false
+             }" class="badges">{{ item.status ? 'Activo' : 'Inactivo' }}
+           </span>
+            <td>
+              <a class="me-3" data-bs-toggle="modal" data-bs-target="#addtable">
+                <img src="assets/img/icons/edit.svg" alt="img" (click)="openEditModal(item)" />
+              </a>
+              <a class="me-3">
+                <img src="assets/img/icons/delete.svg" alt="img" (click)="deleteMesa(item)"/>
+              </a>
+              <button (click)="downloadQRCode(item.qrCode)">Descargar QR</button>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="addtable" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Agregar mesa</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <form [formGroup]="mesaForm">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label>Nombre<span class="manitory">*</span></label>
+              <input type="text" formControlName="name">
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <label>Tamaño<span class="manitory">*</span></label>
+              <input type="text" formControlName="size">
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <label>Estado</label>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio"  formControlName="status" id="homeRadio" [value]="true">
+                <label class="form-check-label" for="homeRadio">Activo</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio"  formControlName="status" id="workRadio" [value]="false">
+                <label class="form-check-label" for="workRadio">Inactivo</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-submit" (click)="save()">Confirmar</button>
+        <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

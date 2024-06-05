@@ -1,0 +1,114 @@
+<div class="page-header">
+  <div class="page-title">
+    <h4>Clientes</h4>
+  </div>
+  <div class="page-btn">
+    <!-- <a class="btn btn-added" data-bs-toggle="modal" (click)="resetFormAdd()" data-bs-target="#add_branch"><img
+        src="assets/img/icons/plus.svg" class="me-2" alt="img" />Add Branch</a> -->
+    <a href="javascript:void(0);" class="btn btn-added" data-bs-toggle="modal" data-bs-target="#addClient"><i
+        class="fa fa-plus me-2"></i>Agregar Cliente</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="card">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table matSort matSortActive="Sno" matSortDirection="asc" matSortDisableClear class="table datanew">
+        <thead>
+          <tr>
+            <th>NOMBRE</th>
+            <th>EMAL</th>
+            <th>TELÉFONO</th>
+            <th>ESTADO</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Joel</td>
+            <td>joel@gmail.com</td>
+            <td>256-698-5896</td>
+            <td>Activo</td>
+
+            <td>
+              <a class="me-3" data-bs-toggle="modal" data-bs-target="#add_branch">
+                <img src="assets/img/icons/edit.svg" alt="img" />
+              </a>
+              <a class="me-3">
+                <img src="assets/img/icons/delete.svg" alt="img" />
+              </a>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="addClient" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cliente</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-6 col-sm-12 col-12">
+            <div class="form-group">
+              <label>NOMBRE<span class="manitory">*</span></label>
+              <input type="text">
+            </div>
+          </div>
+          <div class="col-lg-6 col-sm-12 col-12">
+            <div class="form-group">
+              <label>EMAIL<span class="manitory">*</span></label>
+              <input type="text">
+            </div>
+          </div>
+          <div class="col-lg-6 col-sm-12 col-12">
+            <div class="form-group">
+              <label>TEÑËFONO<span class="manitory">*</span></label>
+              <input type="text">
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-sm-12 col-12">
+            <div class="form-group">
+              <label>ESTADO</label>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="homeRadio" [value]="true">
+                <label class="form-check-label" for="homeRadio">Active</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="workRadio" [value]="false">
+                <label class="form-check-label" for="workRadio">Inactive</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-sm-12 col-12">
+            <div class="form-group">
+              <label>CONTRASEÑA<span class="manitory">*</span></label>
+              <input type="password">
+            </div>
+          </div>
+          <div class="col-lg-6 col-sm-12 col-12">
+            <div class="form-group">
+              <label>CONFIRMAR CONTRASEÑA<span class="manitory">*</span></label>
+              <input type="password">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-submit">Confirm</button>
+        <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
