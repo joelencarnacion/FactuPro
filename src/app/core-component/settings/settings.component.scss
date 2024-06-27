@@ -1,0 +1,26 @@
+.cardTamanio{
+  height: 100%;
+}
+
+a:hover {
+  color: #567dff;
+  background-color: transparent !important;/* /* Color de texto cuando se hace hover */
+}
+/* Estilo cuando se hace hover sobre el enlace */
+a:hover i {
+  color:  #567dff;;
+}
+
+.active i{
+  color:  #567dff;
+}
+.active {
+  color:  #567dff;;
+}
+.divider {
+  border-bottom: 0.1px solid #e9e9e9; /* Añade un borde inferior para dividir */
+  margin-bottom: 1px;
+  margin-top: 1px;
+}
+
+

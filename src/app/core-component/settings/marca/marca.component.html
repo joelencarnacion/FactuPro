@@ -1,0 +1,97 @@
+<div class="page-header">
+  <div class="page-title">
+    <h4>Marcas</h4>
+  </div>
+  <div class="page-btn">
+    <!-- <a class="btn btn-added" data-bs-toggle="modal" (click)="resetFormAdd()" data-bs-target="#add_branch"><img
+          src="assets/img/icons/plus.svg" class="me-2" alt="img" />Add Branch</a> -->
+    <a (click)="resetFormAdd()" href="javascript:void(0);" class="btn btn-added" data-bs-toggle="modal"
+      data-bs-target="#add_branch"><i class="fa fa-plus me-2"></i>Agregar Marca</a>
+  </div>
+</div>
+
+
+<div class="email-header">
+  <div class="divider"></div> <!-- Agrega una clase divider para dividir visualmente -->
+  <!-- <div class="card"> -->
+  <div class="card-body">
+    <!-- <div class="table-top">
+
+    <!-- /Filter -->
+    <div class="card mb-0 border-0">
+
+    </div>
+    <!-- /Filter -->
+    <div class="table-responsive">
+      <table matSort matSortActive="Sno" matSortDirection="asc" matSortDisableClear class="table datanew">
+        <thead>
+          <tr>
+            <th>NOMBRE</th>
+            <th>CATEGORIA</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of marcaList; let i = index">
+
+            <td>{{item.nombre}}</td>
+            <td>{{item.categoria.nombre}}</td>
+            <td>
+
+              <a class="me-3" data-bs-toggle="modal" data-bs-target="#add_branch" (click)="resetFormEdit()">
+                <img src="assets/img/icons/edit.svg" alt="img" />
+              </a>
+              <a class="me-3">
+                <img src="assets/img/icons/delete.svg" alt="img" />
+              </a>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- </div> -->
+
+  <div class="modal fade" id="add_branch" tabindex="-1" aria-labelledby="create" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">Agregar Marca</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <form [formGroup]="MarcaForm">
+            <div class="row">
+              <div class="col-lg-6 col-sm-12 col-12">
+                <div class="form-group">
+                  <label>Nombre</label>
+                  <input type="text" formControlName="nombre" required="true" />
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-12 col-12">
+                <div class="form-group">
+                  <label>Categoría<span class="manitory">*</span></label>
+                  <select class="form-select" id="exampleSelect">
+                    <option selected>Select an option...</option>
+                    <option *ngFor="let data of categoryList" [value]="data.idCategoria">
+                      {{data.nombre}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="col-lg-12">
+            <a class="btn btn-submit me-2" (click)="save()">Guardar</a>
+            <a class="btn btn-cancel" data-bs-dismiss="modal">Cancelar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /product list -->
