@@ -11,8 +11,8 @@ const routes: Routes = [
       {
         path: 'payment-settings',
         loadChildren: () =>
-          import('./paymentsettings/paymentsettings.module').then(
-            (m) => m.PaymentsettingsModule
+          import('./modelo/modelo.module').then(
+            (m) => m.ModeloModule
           ),
       },
       {
@@ -40,6 +40,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('./categoria/categoria.module').then(
             (m) => m.CategoriaModule
+          ),
+      },
+      {
+        path: 'modelos',
+        loadChildren: () =>
+          import('./modelo/modelo.module').then(
+            (m) => m.ModeloModule
           ),
       },
     ],

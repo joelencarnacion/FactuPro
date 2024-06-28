@@ -102,6 +102,12 @@ export interface MarcaI{
 }
 
 
+export interface ModeloI{
+idModelo:number,
+nombre:string,
+idMarca:number,
+marca:MarcaI
+}
 
 export interface MesaI{
   id:number,

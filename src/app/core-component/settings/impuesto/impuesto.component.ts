@@ -44,7 +44,6 @@ export class ImpuestoComponent implements OnInit {
     this.impuestosService.postImpuesto(this.currentImpuesto).subscribe((resp: ResponseI) => {
       successMessageAlert(resp.message);
       this.getImpuestos();
-
     })
   }
 
@@ -99,19 +98,28 @@ export class ImpuestoComponent implements OnInit {
 
 
   }
-  closedModal(){
+
+  closedModal() {
     const modalElement = document.getElementById('addpayment');
     if (modalElement) {
       modalElement.classList.remove('show');
       modalElement.setAttribute('aria-hidden', 'true');
       modalElement.style.display = 'none';
+
+      // Remove the modal-backdrop
       const modalBackdrop = document.getElementsByClassName('modal-backdrop')[0];
       if (modalBackdrop && modalBackdrop.parentNode) {
         modalBackdrop.parentNode.removeChild(modalBackdrop);
       }
+
+      // Remove classes that prevent scrolling
+      document.body.classList.remove('modal-open');
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
     }
     this.impuestosForm.reset();
   }
+
 
   resetFormEdit() {
     this.impuestosForm.reset(); // Restablece los valores del formulario

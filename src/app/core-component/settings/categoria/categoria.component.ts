@@ -107,19 +107,27 @@ resetFormEdit() {
 
   }
 
-  closedModal(){
+  closedModal() {
     const modalElement = document.getElementById('itemCategory');
     if (modalElement) {
       modalElement.classList.remove('show');
       modalElement.setAttribute('aria-hidden', 'true');
       modalElement.style.display = 'none';
+
+      // Remove the modal-backdrop
       const modalBackdrop = document.getElementsByClassName('modal-backdrop')[0];
       if (modalBackdrop && modalBackdrop.parentNode) {
         modalBackdrop.parentNode.removeChild(modalBackdrop);
       }
+
+      // Remove classes that prevent scrolling
+      document.body.classList.remove('modal-open');
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
     }
     this.categoryForm.reset();
   }
+
 
 
 

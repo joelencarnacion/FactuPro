@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
-import { MarcaI, ResponseI } from '../interfaces/allinterfaces';
+import { MarcaI, ModeloI, ResponseI } from '../interfaces/allinterfaces';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { errorMessageAlert } from '../core/helpers/alert';
 import { environment } from 'src/environments/environment';
 
 @Injectable({providedIn: 'root'})
-export class MarcasService {
+export class ModelosService {
 
   private token = '';
   private baseUrl = environment.api;
@@ -21,23 +21,23 @@ export class MarcasService {
   }
 
 
-  getBranches(): Observable<ResponseI> {
-    return this.http.get<ResponseI>(`${this.baseUrl}/Marca`, this.header)
+  getModelo(): Observable<ResponseI> {
+    return this.http.get<ResponseI>(`${this.baseUrl}/Modelo`, this.header)
       .pipe(catchError((error) => {errorMessageAlert("Error") ; return throwError(error) }))
   }
 
-    postMarca(marca: MarcaI): Observable<ResponseI> {
-    return this.http.post<ResponseI>(`${this.baseUrl}/Marca`, marca, this.header)
+    postModelo(modelo: ModeloI): Observable<ResponseI> {
+    return this.http.post<ResponseI>(`${this.baseUrl}/Modelo`, modelo, this.header)
     .pipe(catchError((error) => { errorMessageAlert("Error"); return throwError(error) }))
   }
 
-    updateMarca(marca: MarcaI): Observable<ResponseI> {
-    return this.http.put<ResponseI>(`${this.baseUrl}/Marca`, marca, this.header)
+    updateModelo(modelo: ModeloI): Observable<ResponseI> {
+    return this.http.put<ResponseI>(`${this.baseUrl}/Modelo`, modelo, this.header)
       .pipe(catchError((error) => { errorMessageAlert(error.error.message); return throwError(error) }))
   }
 
-  deleteMarca(id: number): Observable<ResponseI> {
-    return this.http.delete<ResponseI>(`${this.baseUrl}/Marca/${id}`, this.header)
+  deleteModelo(id: number): Observable<ResponseI> {
+    return this.http.delete<ResponseI>(`${this.baseUrl}/Modelo/${id}`, this.header)
       .pipe(catchError((error) => { errorMessageAlert(error.error.message); return throwError(error) }))
   }
 

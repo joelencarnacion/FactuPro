@@ -522,5 +522,8 @@ export class routes {
   public static get categorias(): string {
     return this.settings + '/categorias';
   }
+  public static get modelos(): string {
+    return this.settings + '/modelos';
+  }
   // core pages child routes *ends*
 }

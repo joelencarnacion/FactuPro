@@ -1133,6 +1133,13 @@ export class SidebarService {
           route: routes.categorias,
           subRoutes: [],
         },
+        {
+          tittle: 'Modelos',
+          hasSubRoute: false,
+          showSubRoute: false,
+          route: routes.modelos,
+          subRoutes: [],
+        },
       ],
     },
   ];
